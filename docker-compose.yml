@@ -9,34 +9,34 @@ services:
       # - ./data/www:/var/www
       - ../../src:/var/www/html
       - ./data/mysql:/var/lib/mysql
-      - ./logs/nginx:/var/log/nginx
-      - ./logs/php-fpm:/var/log/php-fpm
-      - ./logs/mysql:/var/log/mysql
+      - ./log/nginx:/var/log/nginx
+      - ./log/php-fpm:/var/log/php-fpm
+      - ./log/mysql:/var/log/mysql
   web:
     container_name: nginx1.13.5-alpine
     build: ./conf/nginx
+    working_dir: /var/www
     ports:
       - 80:80
     volumes_from:
       - data-volume
-    working_dir: /var/www
 
   app:
     container_name: php7-fpm
     build: ./conf/php-fpm
+    working_dir: /var/www
     ports:
       - 9000:9000
     volumes_from:
       - data-volume
-    working_dir: /var/www
 
   db:
     container_name: mysql5.7
     build: ./conf/mysql
+    working_dir: /var/lib/mysql
     ports:
       - 3306:3306
     volumes_from:
       - data-volume
-    working_dir: /var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
