@@ -22,7 +22,7 @@ services:
     working_dir: /var/www
     ports:
       - 80:80
-    s:
+    links:
       - app
     volumes_from:
       - data-volume
@@ -33,7 +33,7 @@ services:
     working_dir: /var/www
     ports:
       - 9000:9000
-    s:
+    links:
       - db
     volumes_from:
       - data-volume
