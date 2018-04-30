@@ -1,5 +1,6 @@
 version: '2'
 services:
+
   data-volume:
     container_name: 'data-volume'
     image: busybox
@@ -14,12 +15,15 @@ services:
       - ./log/nginx:/var/log/nginx
       - ./log/php-fpm:/var/log/php-fpm
       - ./log/mysql:/var/log/mysql
+
   web:
-    container_name: nginx1.13.5-alpine
+    container_name: nginx
     build: ./conf/nginx
     working_dir: /var/www
     ports:
       - 80:80
+    s:
+      - app
     volumes_from:
       - data-volume
 
@@ -29,11 +33,13 @@ services:
     working_dir: /var/www
     ports:
       - 9000:9000
+    s:
+      - db
     volumes_from:
       - data-volume
 
   db:
-    container_name: mysql5.7
+    container_name: mysql57
     build: ./conf/mysql
     working_dir: /var/lib/mysql
     ports:
@@ -41,4 +47,4 @@ services:
     volumes_from:
       - data-volume
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: password
