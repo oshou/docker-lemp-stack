@@ -34,7 +34,16 @@ services:
     ports:
       - 9000:9000
     links:
+      - cache
       - db
+    volumes_from:
+      - data-volume
+
+  cache:
+    container_name: memcached
+    build: ./conf/memcached
+    ports:
+      - 11211:11211
     volumes_from:
       - data-volume
 
