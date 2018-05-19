@@ -2,7 +2,7 @@ version: '2'
 services:
 
   data-volume:
-    container_name: 'data-volume'
+    container_name: docker-data
     image: busybox
     volumes:
       - ./conf/nginx/nginx.conf:/etc/nginx/nginx.conf
@@ -17,7 +17,7 @@ services:
       - ./log/mysql:/var/log/mysql
 
   web:
-    container_name: nginx
+    container_name: docker-nginx
     build: ./conf/nginx
     working_dir: /var/www
     ports:
@@ -28,7 +28,7 @@ services:
       - data-volume
 
   app:
-    container_name: php7-fpm
+    container_name: docker-php7fpm
     build: ./conf/php-fpm
     working_dir: /var/www
     ports:
@@ -40,7 +40,7 @@ services:
       - data-volume
 
   cache:
-    container_name: memcached
+    container_name: docker-memcached
     build: ./conf/memcached
     ports:
       - 11211:11211
@@ -48,7 +48,7 @@ services:
       - data-volume
 
   db:
-    container_name: mysql57
+    container_name: docker-mysql57
     build: ./conf/mysql
     working_dir: /var/lib/mysql
     ports:
