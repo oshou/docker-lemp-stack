@@ -5,4 +5,5 @@ RUN echo "set timezone" \
     && cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
     && apk del tzdata \
     && echo "install mysql mysqli pdo driver" \
-    && docker-php-ext-install mysqli pdo pdo_mysql
+    && docker-php-ext-install mysqli pdo pdo_mysql \
+    && rm -rf /var/cache/apk
