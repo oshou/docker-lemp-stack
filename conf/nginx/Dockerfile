@@ -1,4 +1,5 @@
 FROM nginx:1.13.5-alpine
+USER root
 RUN echo "set timezone" \
     && apk add --update tzdata \
     && cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
