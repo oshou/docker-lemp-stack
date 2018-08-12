@@ -4,16 +4,19 @@ services:
   data-volume:
     container_name: docker-data
     image: busybox
+    # env_file: .env
     volumes:
+      # @nginx
       - ./conf/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./conf/nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - ./conf/php-fpm/www.conf:/etc/php-fpm.d/www.conf
-      - ./conf/mysql:/etc/mysql
-      # - ./data/www:/var/www
-      - /home/oshou/src:/var/www/html
-      - ./data/mysql:/var/lib/mysql
       - ./log/nginx:/var/log/nginx
+      - "${SRC_DIR}:/var/www/html"
+      # @php-fpm
+      - ./conf/php-fpm/www.conf:/etc/php-fpm.d/www.conf
       - ./log/php-fpm:/var/log/php-fpm
+      # @mysql
+      - ./conf/mysql:/etc/mysql
+      - ./data/mysql:/var/lib/mysql
       - ./log/mysql:/var/log/mysql
 
   web:
