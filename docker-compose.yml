@@ -18,6 +18,8 @@ services:
       - ./conf/php-fpm/php.ini:/usr/local/etc/php/php.ini
       - ./log/php-fpm/logs:/var/log/php-fpm
       - ./log/php-fpm/logs:/var/www/html/logs
+      # @memcached
+      - ./conf/memcached/memcached:/etc/sysconfig/memcached
       # @mysql
       - ./conf/mysql:/etc/mysql
       - ./data/mysql:/var/lib/mysql

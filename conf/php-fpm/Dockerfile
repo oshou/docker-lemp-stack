@@ -5,4 +5,4 @@ RUN echo "set timezone" \
     && cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
     && apk del tzdata
 RUN echo "install mysql mysqli pdo driver" \
-    && docker-php-ext-install pdo_mysql mysqli mbstring \
+    && docker-php-ext-install pdo_mysql mysqli mbstring
