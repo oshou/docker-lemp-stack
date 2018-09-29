@@ -60,6 +60,7 @@ services:
     container_name: docker-mysql57
     image: mysql:5.7
     working_dir: /var/lib/mysql
+    command: mysqld --sql_mode=""
     ports:
       - 3306:3306
     volumes_from:

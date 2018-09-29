@@ -1,4 +1,4 @@
-FROM php:7-fpm-alpine
+FROM php:7.0-fpm-alpine
 USER root
 RUN echo "install mysql mysqli pdo driver" \
     && docker-php-ext-install pdo pdo_mysql mysqli \
