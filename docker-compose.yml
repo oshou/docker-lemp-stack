@@ -69,6 +69,7 @@ services:
       MYSQL_ROOT_PASSWORD: password
 
   system-monitor:
+    container_name: docker-monitor
     image: titpetric/netdata
     volumes:
       - /sys:/host/sys:ro
