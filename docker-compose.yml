@@ -23,7 +23,7 @@ services:
       # @mysql
       - ./conf/mysql:/etc/mysql
       - ./data/mysql:/var/lib/mysql
-      - ./log/mysql/mysqld.log:/var/log/mysqld.log
+      - ./log/mysql/:/var/log/mysqld.log
 
   web:
     container_name: docker-nginx
