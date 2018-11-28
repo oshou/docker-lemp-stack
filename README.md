@@ -5,7 +5,6 @@
 - [alpine] php-fpm(php7)
 - [alpine] memcached v1.5.9
 - [debian] mysql v5.7
-- [debian] mysql v5.7
 
 ## Get started
 
